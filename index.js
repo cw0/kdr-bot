@@ -2,7 +2,12 @@
 
 //declare variables
 var irc = require('irc'),
-    client;
+    client,
+    versionMessageIrssi,
+    versionMessageHexChat;
+
+versionMessageIrssi = 'irssi v0.8.12 - running on CYGWIN_NT-6.1-WOW64 i686';
+versionMessageHexChat = 'VERSION HexChat 2.9.1 [x86] / Windows 8.1 [1.46GHz]';
 
 //initialize the client and connect to a channel
 client = new irc.Client('chat.freenode.net', 'kdrt', {
@@ -41,7 +46,7 @@ client.addListener('pm', function (from, message) {
 
 //spoof the version
 client.addListener('ctcp-version' function (from, to, message) {
-  client.ctcp(from, 'privmsg', 'VERSION HexChat 2.9.1 [x86] / Windows 8.1 [1.46GHz]');
+  client.ctcp(from, 'privmsg', versionMessageHexChat);
 });
 
 //handle errors
