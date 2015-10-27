@@ -14,14 +14,17 @@ client.addListener('registered', function (message) {
   console.log(message);
 });
 
+//log kick messages
 client.addListener('kick', function (channel, nick, by, reason, message) {
   //TODO track statistics
 });
 
+//log any mode changes (+)
 client.addListener('+mode', function (channel, by, mode, argument, message) {
   //TODO track statistics
 });
 
+//log any mode changes (-)
 client.addListener('-mode', function (channel, by, mode, argument, message) {
   //TODO track statistics
 });
@@ -38,7 +41,7 @@ client.addListener('pm', function (from, message) {
 
 //spoof the version
 client.addListener('ctcp-version' function (from, to, message) {
-  client.say(from, 'VERSION HexChat 2.9.1 [x86] / Windows 8.1 [1.46GHz]');
+  client.ctcp(from, 'privmsg', 'VERSION HexChat 2.9.1 [x86] / Windows 8.1 [1.46GHz]');
 });
 
 //handle errors
