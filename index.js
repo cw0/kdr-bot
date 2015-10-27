@@ -43,7 +43,7 @@ client.addListener('message', function (from, to, message) {
 
 //log private messages
 client.addListener('pm', function (from, message) {
-  console.log(from + ' => me: '.orange + message);
+  console.log(from + ' => me: '.yellow + message);
 })
 
 //spoof the version
