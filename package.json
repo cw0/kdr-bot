@@ -1,0 +1,26 @@
+{
+  "name": "kdr-bot",
+  "version": "1.0.0",
+  "description": "ban stat tracker for ##chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cw0/kdr-bot.git"
+  },
+  "keywords": [
+    "irc",
+    "bot"
+  ],
+  "author": "Christopher Wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cw0/kdr-bot/issues"
+  },
+  "homepage": "https://github.com/cw0/kdr-bot#readme",
+  "dependencies": {
+    "irc": "^0.4.0"
+  }
+}
