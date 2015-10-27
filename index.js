@@ -11,7 +11,7 @@ versionMessageHexChat = 'VERSION HexChat 2.9.1 [x86] / Windows 8.1 [1.46GHz]';
 
 //initialize the client and connect to a channel
 client = new irc.Client('chat.freenode.net', 'kdrt', {
-  channels: ['##arguments']
+  channels: ['##chat']
 });
 
 //log successful connection to server
@@ -22,6 +22,7 @@ client.addListener('registered', function (message) {
 //log kick messages
 client.addListener('kick', function (channel, nick, by, reason, message) {
   //TODO track statistics
+  console.log(nick + ' kicked by: ' + by + ' for: ' + reason);
 });
 
 //log any mode changes (+)
@@ -45,7 +46,7 @@ client.addListener('pm', function (from, message) {
 })
 
 //spoof the version
-client.addListener('ctcp-version' function (from, to, message) {
+client.addListener('ctcp-version', function (from, to, message) {
   client.ctcp(from, 'privmsg', versionMessageHexChat);
 });
 
