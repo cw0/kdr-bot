@@ -2,6 +2,7 @@
 
 //declare variables
 var irc = require('irc'),
+    colors = require('colors'),
     client,
     versionMessageIrssi,
     versionMessageHexChat;
@@ -22,7 +23,7 @@ client.addListener('registered', function (message) {
 //log kick messages
 client.addListener('kick', function (channel, nick, by, reason, message) {
   //TODO track statistics
-  console.log(nick + ' kicked by: ' + by + ' for: ' + reason);
+  console.log(nick + ' kicked by: '.green + by + ' for: '.green + reason);
 });
 
 //log any mode changes (+)
@@ -35,18 +36,19 @@ client.addListener('-mode', function (channel, by, mode, argument, message) {
   //TODO track statistics
 });
 
-//log messages
+//log messages (commented out for now)
 client.addListener('message', function (from, to, message) {
-  console.log(from + ' => ' + to + ': ' + message);
+  //console.log(from + ' => ' + to + ': ' + message);
 });
 
 //log private messages
 client.addListener('pm', function (from, message) {
-  console.log(from + ' => me: ' + message);
+  console.log(from + ' => me: '.orange + message);
 })
 
 //spoof the version
 client.addListener('ctcp-version', function (from, to, message) {
+  console.log('CTCP VERSION FROM '.red + from);
   client.ctcp(from, 'privmsg', versionMessageHexChat);
 });
 
