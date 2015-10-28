@@ -24,7 +24,7 @@ client.addListener('registered', function (message) {
 //log kick messages
 client.addListener('kick', function (channel, nick, by, reason, message) {
   //TODO track statistics
-  console.log('%s kicked by: %s for: %s'.green, nick, by, green, reason);
+  console.log('%s kicked by: %s for: %s'.green, nick, by, reason);
 });
 
 //log any mode changes (+)
