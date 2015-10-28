@@ -5,10 +5,12 @@ var irc = require('irc'),
     colors = require('colors'),
     client,
     versionMessageIrssi,
-    versionMessageHexChat;
+    versionMessageHexChat,
+    fCount;
 
 versionMessageIrssi = 'irssi v0.8.12 - running on CYGWIN_NT-6.1-WOW64 i686';
 versionMessageHexChat = 'VERSION HexChat 2.9.1 [x86] / Windows 8.1 [1.46GHz]';
+fCount = 0;
 
 //initialize the client and connect to a channel
 client = new irc.Client('chat.freenode.net', 'swiffy', {
@@ -41,6 +43,10 @@ client.addListener('-mode', function (channel, by, mode, argument, message) {
 
 //log messages (commented out for now)
 client.addListener('message', function (from, to, message) {
+  if (message.indexOf('fuck') != -1) {
+      fCount += 1;
+      console.log('fCount: ' + fCount);
+  }
   //console.log(from + ' => ' + to + ': ' + message);
 });
 
