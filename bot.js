@@ -10,10 +10,11 @@ var
 exports.Bot = Bot;
 
 function Bot(server, nick, channels) {
-
   this.server = server;
   this.nick = nick;
   this.channels = channels;
+  this.realName = 'kenkaniff';
+  this.userName = 'kenkaniff';
 }
 
 Bot.prototype = {
@@ -25,7 +26,9 @@ Bot.prototype = {
       versionMessageHexChat = 'VERSION HexChat 2.9.1 [x86] / Windows 8.1 [1.46GHz]';
 
     this.client = new irc.Client(this.server, this.nick, {
-      channels: this.channels
+      channels: this.channels,
+      realName: this.realName,
+      userName: this.userName
     });
     this.client.addListener('registered', function (message) {
       console.log('kdr bot connected to server successfully');
