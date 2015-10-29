@@ -44,8 +44,8 @@ client.addListener('-mode', function (channel, by, mode, argument, message) {
 //log messages (commented out for now)
 client.addListener('message', function (from, to, message) {
   if (message.indexOf('fuck') != -1) {
-      fCount += 1;
-      console.log('fCount: ' + fCount);
+    fCount += 1;
+    console.log('fCount: ' + fCount);
   }
   //console.log(from + ' => ' + to + ': ' + message);
 });
@@ -62,6 +62,6 @@ client.addListener('ctcp-version', function (from, to, message) {
 });
 
 //handle errors
-client.addListener('error', function(message) {
+client.addListener('error', function (message) {
   console.log('error: ', message);
 });
