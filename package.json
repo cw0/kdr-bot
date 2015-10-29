@@ -22,6 +22,7 @@
   "homepage": "https://github.com/cw0/kdr-bot#readme",
   "dependencies": {
     "colors": "^1.1.2",
-    "irc": "^0.4.0"
+    "irc": "^0.4.0",
+    "nano": "^6.1.5"
   }
 }
