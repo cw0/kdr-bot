@@ -76,7 +76,7 @@ function Bot(server, nick, channels, realName, userName) {
     });
   };
 
-  this.onMinusMode =  function (channel, by, mode, argument, message) {
+  this.onMinusMode = function (channel, by, mode, argument, message) {
     var data = {
       date : Date.now(),
       type : '-mode',
