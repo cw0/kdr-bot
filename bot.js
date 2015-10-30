@@ -9,12 +9,12 @@ var
 
 exports.Bot = Bot;
 
-function Bot(server, nick, channels, realName, userName) {
+function Bot(server, nick, realName, userName, channels) {
   this.server = server;
   this.nick = nick;
   this.channels = channels;
-  this.realName = realName || 'wizard';
-  this.userName = userName || 'wizard';
+  this.realName = realName || 'thomas';
+  this.userName = userName || 'thomas';
 
   this.onRegister = function (message) {
     console.log('kdr bot connected to server successfully');
@@ -56,7 +56,7 @@ function Bot(server, nick, channels, realName, userName) {
       }
     });
   };
-  
+
   this.onPlusMode = function (channel, by, mode, argument, message) {
     var data = {
       date : Date.now(),
@@ -112,7 +112,7 @@ function Bot(server, nick, channels, realName, userName) {
   };
 
   this.onCtcpVersion = function (from, to, message) {
-    var 
+    var
       versionMessageIrssi = 'irssi v0.8.12 - running on CYGWIN_NT-6.1-WOW64 i686',
       versionMessageHexChat = 'VERSION HexChat 2.9.1 [x86] / Windows 8.1 [1.46GHz]',
       data = {
@@ -142,8 +142,8 @@ Bot.prototype = {
   constructor: Bot,
   connect: function () {
     var
-      self = this; 
-      
+      self = this;
+
     this.client = new irc.Client(this.server, this.nick, {
       channels: this.channels,
       realName: this.realName,
