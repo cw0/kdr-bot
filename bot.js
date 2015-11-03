@@ -144,20 +144,24 @@ Bot.prototype = {
   connect: function () {
     var
       self = this;
-
-    this.isOnline = true;
-    this.client = new irc.Client(this.server, this.nick, {
-      channels: this.channels,
-      realName: this.realName,
-      userName: this.userName
-    });
-    this.client.addListener('registered', this.onRegister);
-    this.client.addListener('kick', this.onKick);
-    this.client.addListener('message', this.onMessage);
-    this.client.addListener('+mode', this.onPlusMode);
-    this.client.addListener('-mode', this.onMinusMode);
-    this.client.addListener('pm', this.onPm);
-    this.client.addListener('ctcp-version', this.onCtcpVersion.bind(this));
-    this.client.addListener('error', this.onIrcError);
+    
+    if (!isOnline) {
+      this.isOnline = true;
+      this.client = new irc.Client(this.server, this.nick, {
+        channels: this.channels,
+        realName: this.realName,
+        userName: this.userName
+      });
+      this.client.addListener('registered', this.onRegister);
+      this.client.addListener('kick', this.onKick);
+      this.client.addListener('message', this.onMessage);
+      this.client.addListener('+mode', this.onPlusMode);
+      this.client.addListener('-mode', this.onMinusMode);
+      this.client.addListener('pm', this.onPm);
+      this.client.addListener('ctcp-version', this.onCtcpVersion.bind(this));
+      this.client.addListener('error', this.onIrcError);
+    } else {
+      console.log('already connected');
+    }
   }
 }
