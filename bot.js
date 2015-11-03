@@ -15,6 +15,7 @@ function Bot(server, nick, realName, userName, channels) {
   this.channels = channels;
   this.realName = realName || 'thomas';
   this.userName = userName || 'thomas';
+  this.isOnline = false;
 
   this.onRegister = function (message) {
     console.log('kdr bot connected to server successfully');
@@ -144,6 +145,7 @@ Bot.prototype = {
     var
       self = this;
 
+    this.isOnline = true;
     this.client = new irc.Client(this.server, this.nick, {
       channels: this.channels,
       realName: this.realName,
