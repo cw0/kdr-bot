@@ -12,7 +12,7 @@ gulp.task('default', function () {
   //set up nodemon
   nodemon({
     //point to our app script
-    script: 'app.js',
+    script: './bin/www',
     ext: 'js'
   }).on('restart', function () {
     gulp.src('app.js')
