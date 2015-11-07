@@ -4,7 +4,6 @@ $(document).ready(function () {
 
 function hanldeBotStatus () {
   var status = $('#bot-status').data('status');
-  console.log(status);
 
   if (status == 'offline') {
     $('body').addClass('offline');

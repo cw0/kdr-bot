@@ -2,12 +2,12 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to #{title} #{status}
 
-  if isOnline == offline
+  if !status
     h2 offline
     #bot-status(data-status='offline')
-    form(action='/', id='bot-setup-form', class='form-horizontal')
+    form(action='/connect', method='post', id='bot-setup-form', class='form-horizontal')
       .container
         .row
           .col-xs-2
@@ -27,6 +27,10 @@ block content
               = 'real name:'
           .col-xs-3
             input(type='text', name='real-name-input', id='real-name-input' class='form-control')
+        .row
+          .col-xs-12
+            button(type='submit', id='bot-submit-btn', class='btn btn-success')
+              = 'connect'
   else
     h2 online
     #bot-status(data-status='online')

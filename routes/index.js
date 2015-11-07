@@ -13,4 +13,18 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* POST connect */
+router.post('/connect', function(req, res, next) {
+  var bot = req.app.get('bot');
+  bot.connect();
+
+  console.log(req.body);
+  //test
+
+  res.render('index', {
+    title: 'KDR BOT',
+    status: bot.isOnline
+  });
+});
+
 module.exports = router;

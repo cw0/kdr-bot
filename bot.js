@@ -144,9 +144,10 @@ Bot.prototype = {
   connect: function () {
     var
       self = this;
-    
-    if (!isOnline) {
-      this.isOnline = true;
+
+    console.log('isOnline?:', self.isOnline);
+    if (!self.isOnline) {
+      self.isOnline = true;
       this.client = new irc.Client(this.server, this.nick, {
         channels: this.channels,
         realName: this.realName,
