@@ -6,6 +6,7 @@ block content
 
   if isOnline == offline
     h2 offline
+    #bot-status(data-status='offline')
     form(action='/', id='bot-setup-form', class='form-horizontal')
       .container
         .row
@@ -28,3 +29,6 @@ block content
             input(type='text', name='real-name-input', id='real-name-input' class='form-control')
   else
     h2 online
+    #bot-status(data-status='online')
+
+  script(type='text/javascript' src='javascripts/index.js')

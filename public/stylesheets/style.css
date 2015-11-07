@@ -7,10 +7,10 @@ a {
   color: #00B7FF;
 }
 
-body .offline {
+.offline {
   background-color: red;
 }
 
-body .online {
+.online {
   background-color: green;
 }
