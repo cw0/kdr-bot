@@ -12,8 +12,11 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 //init app and irc bot
-var app = express();
-var bot = new ircBot.Bot('chat.freenode.net', 'meatboy', 'meatboy', 'meatboy', ['##arguments']);
+var
+  app = express(),
+  bot = new ircBot.Bot('chat.freenode.net', 'meatboy', 'meatboy', 'meatboy', ['##arguments']);
+  
+app.set('bot', bot);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -3,3 +3,28 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  if isOnline == offline
+    h2 offline
+    form(action='/', id='bot-setup-form', class='form-horizontal')
+      .container
+        .row
+          .col-xs-2
+            label(for='nick-input', id='nick-input-label', class='control-label')
+              = 'nick:'
+          .col-xs-3
+            input(type='text', name='nick-input', id='nick-input', class='form-control')
+        .row
+          .col-xs-2
+            label(for='user-name-input', id='user-name-input-label', class='control-label')
+              = 'user name:'
+          .col-xs-3
+            input(type='text', name='user-name-input', id='user-name-input' class='form-control')
+        .row
+          .col-xs-2
+            label(for='real-name-input', id='real-name-input-label', class='control-label')
+              = 'real name:'
+          .col-xs-3
+            input(type='text', name='real-name-input', id='real-name-input' class='form-control')
+  else
+    h2 online
