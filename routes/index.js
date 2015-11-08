@@ -16,10 +16,15 @@ router.get('/', function(req, res, next) {
 /* POST connect */
 router.post('/connect', function(req, res, next) {
   var bot = req.app.get('bot');
-  bot.connect();
 
+  bot.nick = req.body['nick-input'];
+  bot.realName = req.body['real-name-input'];
+  bot.userName = req.body['user-name-input'];
+  bot.server = req.body['server-input'];
+  bot.channels = req.body['channels-input'];
+
+  bot.connect();
   console.log(req.body);
-  //test
 
   res.render('index', {
     title: 'KDR BOT',

@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title} #{status}
+  p Welcome to #{title}
 
   if !status
     h2 offline
@@ -28,11 +28,28 @@ block content
           .col-xs-3
             input(type='text', name='real-name-input', id='real-name-input' class='form-control')
         .row
-          .col-xs-12
-            button(type='submit', id='bot-submit-btn', class='btn btn-success')
+          .col-xs-2
+            label(for='server-input', id='server-input-label', class='control-label')
+              = 'server:'
+          .col-xs-3
+            input(type='text', name='server-input', id='server-input', class='form-control')
+        .row
+          .col-xs-2
+            label(for='channels-input', id='channels-input-label', class='control-label')
+              = 'channels:'
+          .col-xs-3
+            input(type='text', name='channels-input', id='channels-input' class='form-control')
+        br/
+        .row
+          .col-xs-5
+            button(type='submit', id='bot-connect-btn', class='btn btn-success col-xs-12')
               = 'connect'
   else
     h2 online
     #bot-status(data-status='online')
+    .container
+      .row
+        .col-xs-5
+          button(type='submit', id='bot-disconnect-btn', class='btn btn-danger col-xs-12')
 
   script(type='text/javascript' src='javascripts/index.js')
