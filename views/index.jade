@@ -14,31 +14,31 @@ block content
             label(for='nick-input', id='nick-input-label', class='control-label')
               = 'nick:'
           .col-xs-3
-            input(type='text', name='nick-input', id='nick-input', class='form-control')
+            input(type='text', name='nick-input', id='nick-input', class='form-control' value='#{nick}')
         .row
           .col-xs-2
             label(for='user-name-input', id='user-name-input-label', class='control-label')
               = 'user name:'
           .col-xs-3
-            input(type='text', name='user-name-input', id='user-name-input' class='form-control')
+            input(type='text', name='user-name-input', id='user-name-input' class='form-control' value='#{userName}')
         .row
           .col-xs-2
             label(for='real-name-input', id='real-name-input-label', class='control-label')
               = 'real name:'
           .col-xs-3
-            input(type='text', name='real-name-input', id='real-name-input' class='form-control')
+            input(type='text', name='real-name-input', id='real-name-input' class='form-control' value='#{realName}')
         .row
           .col-xs-2
             label(for='server-input', id='server-input-label', class='control-label')
               = 'server:'
           .col-xs-3
-            input(type='text', name='server-input', id='server-input', class='form-control')
+            input(type='text', name='server-input', id='server-input', class='form-control' value='#{server}')
         .row
           .col-xs-2
             label(for='channels-input', id='channels-input-label', class='control-label')
               = 'channels:'
           .col-xs-3
-            input(type='text', name='channels-input', id='channels-input' class='form-control')
+            input(type='text', name='channels-input', id='channels-input' class='form-control' value='#{channels}')
         br/
         .row
           .col-xs-5
@@ -49,7 +49,33 @@ block content
     #bot-status(data-status='online')
     .container
       .row
+        .col-xs-2
+          = 'nick:'
+        .col-xs-3
+          = nick
+      .row
+        .col-xs-2
+          = 'real name:'
+        .col-xs-3
+          = realName
+      .row
+        .col-xs-2
+          = 'user name:'
+        .col-xs-3
+          = userName
+      .row
+        .col-xs-2
+          = 'server:'
+        .col-xs-3
+          = server
+      .row
+        .col-xs-2
+          = 'channels'
+        .col-xs-3
+          = channels
+      .row
         .col-xs-5
           button(type='submit', id='bot-disconnect-btn', class='btn btn-danger col-xs-12')
+            = 'disconnect'
 
   script(type='text/javascript' src='javascripts/index.js')

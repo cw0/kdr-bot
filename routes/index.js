@@ -9,6 +9,11 @@ router.get('/', function(req, res, next) {
 
   res.render('index', {
     title: 'KDR BOT',
+    nick: 'meatboy',
+    realName: 'meatboy',
+    userName: 'meatboy',
+    server: 'chat.freenode.net',
+    channels: '##arguments',
     status: bot.isOnline
   });
 });
@@ -21,14 +26,19 @@ router.post('/connect', function(req, res, next) {
   bot.realName = req.body['real-name-input'];
   bot.userName = req.body['user-name-input'];
   bot.server = req.body['server-input'];
-  bot.channels = req.body['channels-input'];
+  bot.channels = req.body['channels-input'].split(',');
 
   bot.connect();
   console.log(req.body);
 
   res.render('index', {
     title: 'KDR BOT',
-    status: bot.isOnline
+    status: bot.isOnline,
+    nick: bot.nick,
+    realName: bot.realName,
+    userName: bot.userName,
+    server: bot.server,
+    channels: bot.channels
   });
 });
 

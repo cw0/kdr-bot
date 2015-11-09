@@ -13,7 +13,7 @@ gulp.task('default', function () {
   nodemon({
     //point to our app script
     script: './bin/www',
-    ext: 'js jade'
+    ext: 'js'
   }).on('restart', function () {
     gulp.src('app.js')
     .pipe(livereload())
