@@ -47,35 +47,36 @@ block content
   else
     h2 online
     #bot-status(data-status='online')
-    .container
-      .row
-        .col-xs-2
-          = 'nick:'
-        .col-xs-3
-          = nick
-      .row
-        .col-xs-2
-          = 'real name:'
-        .col-xs-3
-          = realName
-      .row
-        .col-xs-2
-          = 'user name:'
-        .col-xs-3
-          = userName
-      .row
-        .col-xs-2
-          = 'server:'
-        .col-xs-3
-          = server
-      .row
-        .col-xs-2
-          = 'channels'
-        .col-xs-3
-          = channels
-      .row
-        .col-xs-5
-          button(type='submit', id='bot-disconnect-btn', class='btn btn-danger col-xs-12')
-            = 'disconnect'
+    form(action='/disconnect', method='post', id='bot-setup-form', class='form-horizontal')
+      .container
+        .row
+          .col-xs-2
+            = 'nick:'
+          .col-xs-3
+            = nick
+        .row
+          .col-xs-2
+            = 'real name:'
+          .col-xs-3
+            = realName
+        .row
+          .col-xs-2
+            = 'user name:'
+          .col-xs-3
+            = userName
+        .row
+          .col-xs-2
+            = 'server:'
+          .col-xs-3
+            = server
+        .row
+          .col-xs-2
+            = 'channels'
+          .col-xs-3
+            = channels
+        .row
+          .col-xs-5
+            button(type='submit', id='bot-disconnect-btn', class='btn btn-danger col-xs-12')
+              = 'disconnect'
 
   script(type='text/javascript' src='javascripts/index.js')

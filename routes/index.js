@@ -45,6 +45,7 @@ router.post('/connect', function(req, res, next) {
 router.post('/disconnect', function(req, res, next) {
   var bot = req.app.get('bot');
 
+  console.log(req.body);
   bot.disconnect();
 
   res.render('index', {
