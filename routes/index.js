@@ -42,4 +42,20 @@ router.post('/connect', function(req, res, next) {
   });
 });
 
+router.post('/disconnect', function(req, res, next) {
+  var bot = req.app.get('bot');
+
+  bot.disconnect();
+
+  res.render('index', {
+    title: 'KDR BOT',
+    status: bot.isOnline,
+    nick: bot.nick,
+    realName: bot.realName,
+    userName: bot.userName,
+    server: bot.server,
+    channels: bot.channels
+  });
+});
+
 module.exports = router;

@@ -164,5 +164,18 @@ Bot.prototype = {
     } else {
       console.log('already connected');
     }
+  },
+  disconnect: function () {
+    var
+      self = this;
+
+    if (self.isOnline) {
+      self.client.disconnect('quit', function () {
+        console.log('bot offline');
+        self.isOnline = false;
+      });
+    } else {
+      console.log('bot is already offline');
+    }
   }
 }
