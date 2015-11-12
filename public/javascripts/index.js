@@ -2,6 +2,8 @@ $(document).ready(function () {
   hanldeBotStatus();
 });
 
+var socket = io();
+
 function hanldeBotStatus () {
   var status = $('#bot-status').data('status');
 
