@@ -16,9 +16,13 @@ function Bot(server, nick, realName, userName, channels) {
   this.realName = realName || 'thomas';
   this.userName = userName || 'thomas';
   this.isOnline = false;
+  this.io = require('socket.io-client')('http://localhost:3000');
+
+  //console.log(this.io);
 
   this.onRegister = function (message) {
     console.log('kdr bot connected to server successfully');
+    this.io.emit('bot-connect', 'everyone');
     //console.log(message);
   };
 
@@ -153,7 +157,7 @@ Bot.prototype = {
         realName: this.realName,
         userName: this.userName
       });
-      this.client.addListener('registered', this.onRegister);
+      this.client.addListener('registered', this.onRegister.bind(this));
       this.client.addListener('kick', this.onKick);
       this.client.addListener('message', this.onMessage);
       this.client.addListener('+mode', this.onPlusMode);
@@ -173,9 +177,10 @@ Bot.prototype = {
       self.client.disconnect('quit', function () {
         console.log('bot offline');
         self.isOnline = false;
+        this.io.emit('bot-disconnect', 'everyone');
       });
     } else {
       console.log('bot is already offline');
     }
   }
-}
+};

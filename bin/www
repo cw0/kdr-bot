@@ -33,13 +33,19 @@ server.on('listening', onListening);
 var io = require('socket.io')(server);
 
 var bot = app.get('bot');
-console.log(bot);
+//console.log(bot);
 
 //log when someone connects to our server;
 io.on('connection', function (socket) {
   console.log('a new user connected');
   socket.on('disconnect', function() {
     console.log('user disconnected');
+  });
+  socket.on('bot-connect', function (msg) {
+    console.log('bot is connected');
+  });
+  socket.on('bot-disconnect', function (msg) {
+    console.log('bot is disconnected');
   });
 });
 

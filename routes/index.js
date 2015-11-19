@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var bot = req.app.get('bot');
 
-  console.log('bot: ', bot);
+  //console.log('bot: ', bot);
 
   res.render('index', {
     title: 'KDR BOT',
@@ -29,7 +29,7 @@ router.post('/connect', function(req, res, next) {
   bot.channels = req.body['channels-input'].split(',');
 
   bot.connect();
-  console.log(req.body);
+  //console.log(req.body);
 
   res.render('index', {
     title: 'KDR BOT',
@@ -45,7 +45,7 @@ router.post('/connect', function(req, res, next) {
 router.post('/disconnect', function(req, res, next) {
   var bot = req.app.get('bot');
 
-  console.log(req.body);
+  //console.log(req.body);
   bot.disconnect();
 
   res.render('index', {
