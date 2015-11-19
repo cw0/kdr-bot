@@ -1,10 +1,13 @@
 $(document).ready(function () {
-  hanldeBotStatus();
+  handleBotStatus();
 });
 
 var socket = io();
 
-function hanldeBotStatus () {
+socket.on('bot-connect', handleBotStatus);
+socket.on('bot-disconnect', handleBotStatus);
+
+function handleBotStatus () {
   var status = $('#bot-status').data('status');
 
   if (status == 'offline') {
