@@ -43,6 +43,7 @@ io.on('connection', function (socket) {
   });
   socket.on('bot-connect', function (msg) {
     console.log('bot is connected');
+    io.emit('bot-connect', msg);
   });
   socket.on('bot-disconnect', function (msg) {
     console.log('bot is disconnected');

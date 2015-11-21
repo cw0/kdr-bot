@@ -2,10 +2,13 @@ $(document).ready(function () {
   handleBotStatus();
 });
 
-var socket = io();
+var socket = io.connect('http://localhost:3000');
 
-socket.on('bot-connect', handleBotStatus);
-socket.on('bot-disconnect', handleBotStatus);
+socket.on('bot-connect', function (msg) {
+  console.log(msg);
+});
+socket.on('bot-disconnect', handleBotPM);
+socket.on('bot-message', handleBotPM);
 
 function handleBotStatus () {
   var status = $('#bot-status').data('status');
@@ -21,4 +24,8 @@ function handleBotStatus () {
     $('html').addClass('online');
     $('html').removeClass('offline');
   }
+}
+
+function handleBotPM (msg) {
+  console.log('message: ', msg);
 }
