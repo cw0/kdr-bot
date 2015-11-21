@@ -4,11 +4,9 @@ $(document).ready(function () {
 
 var socket = io.connect('http://localhost:3000');
 
-socket.on('bot-connect', function (msg) {
-  console.log(msg);
-});
-socket.on('bot-disconnect', handleBotPM);
-socket.on('bot-message', handleBotPM);
+socket.on('bot-connect', handleBotPM);
+socket.on('bot-disconnect', handleBotStatus);
+socket.on('bot-on-pm', handleBotPM);
 
 function handleBotStatus () {
   var status = $('#bot-status').data('status');
