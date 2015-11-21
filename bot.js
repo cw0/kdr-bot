@@ -36,6 +36,7 @@ function Bot(server, nick, realName, userName, channels) {
       reason : reason,
       message : message
     };
+    this.io.emit('bot-kick', data);
     db.insert(data, function (err, body) {
       if (!err) {
         console.log('%s kicked by: %s for: %s'.green, nick, by, reason);
@@ -53,6 +54,7 @@ function Bot(server, nick, realName, userName, channels) {
       to : to,
       message : message
     };
+    this.io.emit('bot-message', data);
     db.insert(data, function (err, body) {
       if (!err) {
         //console.log(from + ' => ' + to + ': ' + message);
@@ -72,6 +74,7 @@ function Bot(server, nick, realName, userName, channels) {
       on : argument,
       message : message
     };
+    this.io.emit('bot-on-plus-mode', data);
     db.insert(data, function (err, body) {
       if (!err) {
         console.log('%s set mode: +%s on %s'.blue, by, mode, argument);
@@ -91,6 +94,7 @@ function Bot(server, nick, realName, userName, channels) {
       on : argument,
       message : message
     };
+    this.io.emit('bot-on-minus-model', data);
     db.insert(data, function (err, body) {
       if (!err) {
         console.log('%s set mode: -%s on %s'.blue, by, mode, argument);
@@ -107,6 +111,7 @@ function Bot(server, nick, realName, userName, channels) {
       from : from,
       message : message
     };
+    this.io.emit('bot-on-pm', data);
     db.insert(data, function (err, body) {
       if (!err) {
         console.log('%s => me: %s'.yellow, from, message);
@@ -127,6 +132,7 @@ function Bot(server, nick, realName, userName, channels) {
         to : to,
         message : message
       };
+    this.io.emit('bot-ctcp-version', data);
     db.insert(data, function (err, body) {
       if (!err) {
         console.log('%s => me: CTCP VERSION'.red, from);
@@ -140,6 +146,7 @@ function Bot(server, nick, realName, userName, channels) {
 
   this.onIrcError = function (message) {
     console.log('error: ', message);
+    this.io.emit('bot-irc-error', message);
   };
 }
 
@@ -158,11 +165,11 @@ Bot.prototype = {
         userName: this.userName
       });
       this.client.addListener('registered', this.onRegister.bind(this));
-      this.client.addListener('kick', this.onKick);
-      this.client.addListener('message', this.onMessage);
-      this.client.addListener('+mode', this.onPlusMode);
-      this.client.addListener('-mode', this.onMinusMode);
-      this.client.addListener('pm', this.onPm);
+      this.client.addListener('kick', this.onKick.bind(this));
+      this.client.addListener('message', this.onMessage.bind(this));
+      this.client.addListener('+mode', this.onPlusMode.bind(this));
+      this.client.addListener('-mode', this.onMinusMode.bind(this));
+      this.client.addListener('pm', this.onPm.bind(this));
       this.client.addListener('ctcp-version', this.onCtcpVersion.bind(this));
       this.client.addListener('error', this.onIrcError);
     } else {
