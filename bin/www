@@ -47,6 +47,13 @@ io.on('connection', function (socket) {
   });
   socket.on('bot-disconnect', function (msg) {
     console.log('bot is disconnected');
+    io.emit('bot-disconnect', msg);
+  });
+  socket.on('bot-on-pm', function (msg) {
+    io.emit('bot-on-pm', msg);
+  });
+  socket.on('bot-message', function (msg) {
+    io.emit('bot-message', msg);
   });
 });
 
