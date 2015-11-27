@@ -94,7 +94,7 @@ function Bot(server, nick, realName, userName, channels) {
       on : argument,
       message : message
     };
-    this.io.emit('bot-on-minus-model', data);
+    this.io.emit('bot-on-minus-mode', data);
     db.insert(data, function (err, body) {
       if (!err) {
         console.log('%s set mode: -%s on %s'.blue, by, mode, argument);
@@ -184,7 +184,7 @@ Bot.prototype = {
       self.client.disconnect('quit', function () {
         console.log('bot offline');
         self.isOnline = false;
-        this.io.emit('bot-disconnect', 'everyone');
+        self.io.emit('bot-disconnect', 'everyone');
       });
     } else {
       console.log('bot is already offline');

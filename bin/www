@@ -55,6 +55,18 @@ io.on('connection', function (socket) {
   socket.on('bot-message', function (msg) {
     io.emit('bot-message', msg);
   });
+  socket.on('bot-irc-error', function (msg) {
+    io.emit('bot-irc-error', (msg));
+  });
+  socket.on('bot-on-plus-mode', function (msg) {
+    io.emit('bot-on-plus-mode', msg);
+  });
+  socket.on('bot-on-minus-mode', function (msg) {
+    io.emit('bot-on-minus-mode', msg);
+  });
+  socket.on('bot-ctcp-version', function (msg) {
+    io.emit('bot-ctcp-version', msg);
+  });
 });
 
 /**
