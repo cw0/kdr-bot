@@ -19019,31 +19019,14 @@ module.exports = require('./lib/React');
 },{"./lib/React":53}],159:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var HelloWorld = require('./helloworld.jsx');
 var Message = require('./message.jsx');
-
-ReactDOM.render(
-    React.createElement(HelloWorld, null),
-    document.getElementById('example')
-);
 
 ReactDOM.render(
   React.createElement(Message, {from: 'test sender', message: 'test message'}),
   document.getElementById('example2')
 );
 
-},{"./helloworld.jsx":160,"./message.jsx":161,"react":158,"react-dom":29}],160:[function(require,module,exports){
-var React = require('react');
-
-module.exports = React.createClass({displayName: "exports",
-render: function() {
-    return (
-    React.createElement("h1", null, "Hello, world from a React.js Component!")
-    );
-}
-});
-
-},{"react":158}],161:[function(require,module,exports){
+},{"./message.jsx":160,"react":158,"react-dom":29}],160:[function(require,module,exports){
 var React = require('react');
 
 module.exports = React.createClass({displayName: "exports",
