@@ -19021,10 +19021,16 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Message = require('./message.jsx');
 
-ReactDOM.render(
-  React.createElement(Message, {from: 'test sender', message: 'test message'}),
-  document.getElementById('example2')
-);
+var
+  self = this,
+  socket = io.connect('http://localhost:3000');
+
+socket.on('bot-message', function(data) {
+  ReactDOM.render(
+    React.createElement(Message, {from: data.from, message: data.message}),
+    document.getElementById('example2')
+  );
+});
 
 },{"./message.jsx":160,"react":158,"react-dom":29}],160:[function(require,module,exports){
 var React = require('react');

@@ -22,7 +22,7 @@ function Bot(server, nick, realName, userName, channels) {
 
   this.onRegister = function (message) {
     console.log('kdr bot connected to server successfully');
-    this.io.emit('bot-connect', 'everyone');
+    this.io.emit('bot-connect', 'connected');
     //console.log(message);
   };
 

@@ -28,7 +28,7 @@ router.post('/connect', function(req, res, next) {
   bot.server = req.body['server-input'];
   bot.channels = req.body['channels-input'].split(',');
 
-  //bot.connect();
+  bot.connect();
   //console.log(req.body);
 
   res.json({
@@ -45,7 +45,7 @@ router.post('/connect', function(req, res, next) {
 router.post('/disconnect', function(req, res, next) {
   var bot = req.app.get('bot');
 
-  //bot.disconnect();
+  bot.disconnect();
 
   res.json({
     title: 'KDR BOT',
