@@ -18,6 +18,23 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* GET client page. */
+router.get('/client', function(req, res, next) {
+  var bot = req.app.get('bot');
+
+  //console.log('bot: ', bot);
+
+  res.render('index', {
+    title: 'KDR BOT',
+    nick: 'meatboy',
+    realName: 'meatboy',
+    userName: 'meatboy',
+    server: 'chat.freenode.net',
+    channels: '##arguments',
+    status: bot.isOnline
+  });
+});
+
 /* POST connect */
 router.post('/connect', function(req, res, next) {
   var bot = req.app.get('bot');
